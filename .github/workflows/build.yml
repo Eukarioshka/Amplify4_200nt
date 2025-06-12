@@ -8,35 +8,35 @@ jobs:
     runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Build Xcode project
-      run: |
-        xcodebuild -project Amplify4.xcodeproj -scheme Amplify4 -configuration Release
+      - name: Build Xcode project
+        run: |
+          xcodebuild -project Amplify4.xcodeproj -scheme Amplify4 -configuration Release
 
-    - name: Archive .app into .zip
-      run: |
-        mkdir -p dist
-        cp -R build/Release/Amplify4.app dist/
-        ditto -c -k --sequesterRsrc --keepParent dist/Amplify4.app Amplify4.zip
+      - name: Archive .app into .zip
+        run: |
+          mkdir -p dist
+          cp -R build/Release/Amplify4.app dist/
+          ditto -c -k --sequesterRsrc --keepParent dist/Amplify4.app Amplify4.zip
 
-    - name: Debug: list dist contents
-      run: ls -R dist
+      - name: Debug: list dist contents
+        run: ls -R dist
 
-    - name: Create .dmg
-      run: |
-        hdiutil create -volname Amplify4 \
-                       -srcfolder dist/Amplify4.app \
-                       -ov -format UDZO Amplify4.dmg
+      - name: Create .dmg
+        run: |
+          hdiutil create -volname Amplify4 \
+                         -srcfolder dist/Amplify4.app \
+                         -ov -format UDZO Amplify4.dmg
 
-    - name: Upload .zip
-      uses: actions/upload-artifact@v4
-      with:
-        name: Amplify4-zip
-        path: Amplify4.zip
+      - name: Upload .zip
+        uses: actions/upload-artifact@v4
+        with:
+          name: Amplify4-zip
+          path: Amplify4.zip
 
-    - name: Upload .dmg
-      uses: actions/upload-artifact@v4
-      with:
-        name: Amplify4-dmg
-        path: Amplify4.dmg
+      - name: Upload .dmg
+        uses: actions/upload-artifact@v4
+        with:
+          name: Amplify4-dmg
+          path: Amplify4.dmg
