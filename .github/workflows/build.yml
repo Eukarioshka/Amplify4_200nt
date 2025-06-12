@@ -20,7 +20,8 @@ jobs:
           ditto -c -k --sequesterRsrc --keepParent dist/Amplify4.app Amplify4.zip
 
       - name: Debug: list dist contents
-        run: ls -R dist
+        run: |
+          ls -R dist
 
       - name: Create .dmg
         run: |
