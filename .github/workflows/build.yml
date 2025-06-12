@@ -27,13 +27,13 @@ jobs:
                        -ov -format UDZO Amplify4.dmg
 
     - name: Upload .zip
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: Amplify4-zip
         path: Amplify4.zip
 
     - name: Upload .dmg
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: Amplify4-dmg
         path: Amplify4.dmg
