@@ -12,7 +12,7 @@ jobs:
       - name: Build Xcode project
         run: |
           cd Amplify4
-          xcodebuild -project Amplify4.xcodeproj -scheme Amplify4 -configuration Release
+          xcodebuild -project Amplify4.xcodeproj -scheme Amplify4 -configuration Release SWIFT_VERSION=5.0
           cp -R build/Release/Amplify4.app ../dist/
 
       - name: Archive .app into .zip
