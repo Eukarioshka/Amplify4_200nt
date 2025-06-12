@@ -7,7 +7,7 @@ jobs:
   build:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Build Xcode project
         run: |
@@ -19,7 +19,7 @@ jobs:
           cp -R build/Release/Amplify4.app dist/
           ditto -c -k --sequesterRsrc --keepParent dist/Amplify4.app Amplify4.zip
 
-      - name: Debug: list dist contents
+      - name: "Debug: list dist contents"
         run: |
           ls -R dist
 
